@@ -17,7 +17,6 @@ int main(int argc, char* args[])
     if(fbuffer.open("arbol.dat", std::ios::in))
     {
         std::istream inputStream(&fbuffer);
-        rellenarAbin(inputStream, arbol);
     }
     std::ifstream inputStream("arbol.dat");
 
