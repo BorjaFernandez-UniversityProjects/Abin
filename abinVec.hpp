@@ -1,3 +1,10 @@
+/*
+ * 
+ * Implementación del TAD Árbol Binario mediante
+ * un vector de posiciones fijas.
+ *
+ */
+
 #ifndef ABIN_H
 #define ABIN_H
 
