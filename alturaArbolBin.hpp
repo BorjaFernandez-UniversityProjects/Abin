@@ -15,7 +15,7 @@ template <typename T>
 
         int alturaHijoIzq, alturaHijoDrc;
 
-        if(nodo == NODO_NULO)
+        if(nodo == Abin<T>::NODO_NULO)
         {
             return -1;
         }
@@ -34,3 +34,6 @@ template <typename T>
             }
         }
     }
+
+
+#endif  //ALTURA_ARBOL_BIN_H

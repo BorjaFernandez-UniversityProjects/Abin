@@ -23,7 +23,8 @@ template <typename T>
    T e;
 
    assert(A.arbolVacioB());
-   cout << "Raiz (Fin = " << fin << "): "; cin >> e;
+   cout << "Raiz (Fin = " << fin << "): ";
+   cin >> e;
    if (e != fin) {
       A.insertarRaizB(e);
       rellenarDescendientes(A.raizB(), A, fin);
@@ -67,6 +68,8 @@ template <typename T>
     void rellenarAbin(istream& is, Abin<T>& A)
 {
    T e, fin;
+
+   fin = '#';
 
    assert(A.arbolVacioB());
    if (is >> fin && is >> e && e != fin) {

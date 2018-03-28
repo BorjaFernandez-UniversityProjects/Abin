@@ -66,7 +66,7 @@ template <typename T> class Abin
 /********************************/
 
 template <typename T>
-    const typename Abin<T>::nodo Abin<T>::NODO_NULO(-1);
+    const typename Abin<T>::nodo Abin<T>::NODO_NULO(0);
 
 
 
@@ -82,7 +82,7 @@ template <typename T>
 
 
 template <typename T>
-    inline void Abin<T>::insertarRaizB(const TT& e)
+    inline void Abin<T>::insertarRaizB(const T& e)
     {
         assert(r == NODO_NULO);        //Asegurarse de que el árbol está vacío (raíz == vacío)
 
@@ -251,7 +251,7 @@ template <typename T>
 
 
 template <typename T>
-    typename Abin<T>::nodo Abin<T>::copiar(Abin>T>::nodo n)
+    typename Abin<T>::nodo Abin<T>::copiar(Abin<T>::nodo n)
     {
         nodo m = NODO_NULO;
 

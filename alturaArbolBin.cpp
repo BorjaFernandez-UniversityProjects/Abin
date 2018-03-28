@@ -28,7 +28,7 @@ int main(int argc, char* args[])
         cout << "\n***\tMostrando árbol binario\t***\n";
         imprimirAbin(arbol);
 
-        cout << "\nEl árbol binario es de altura " alturaArbolBin(arbol) << ".\n";
+        cout << "\nEl árbol binario es de altura " << alturaArbolBin(arbol) << ".\n";
 
         return 0;
 }
