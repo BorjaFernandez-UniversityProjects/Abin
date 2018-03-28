@@ -32,11 +32,11 @@ template <typename T>
             void eliminarHijoDrchoB(nodo n);
             bool arbolVacioB() const;
             void eliminarRaizB();
-            const T& elemento(nodo n) const;    //acceso a elto. para lectura
-            T& elemento(nodo n);                //acceso a elto. para lectura/escritura
+            const T& elemento(nodo n) const;    //acceso a elto. para lectura.
+            T& elemento(nodo n);                //acceso a elto. para lectura/escritura.
             nodo raizB() const;                 //Devuelve el nodo correspondiente a la raíz.
-            nodo padreB(nodo n) const;          //Devuelve el nodo padre del nodo pasado como parámetro
-            nodo hijoIzqdoB(nodo n) const;      //Devuelve el nodo hijo izquierdo del nodo pasado por parámetro
+            nodo padreB(nodo n) const;          //Devuelve el nodo padre del nodo pasado como parámetro.
+            nodo hijoIzqdoB(nodo n) const;      //Devuelve el nodo hijo izquierdo del nodo pasado por parámetro.
             nodo hijoDrchoB(nodo n) const;      //Devuelve el nodo hijo derecho del nodo pasado por parámetro.
 
         private:
@@ -49,10 +49,22 @@ template <typename T>
     };
 
 
+/********************************/
+/********************************/
+/*  Definición del nodo nulo    */
+/********************************/
+/********************************/
+
 template <typename T>
-    const typename Abin<T>::nodo Abin<T>::NODO_NULO(-1);    //Definición del nodo nulo.
+    const typename Abin<T>::nodo Abin<T>::NODO_NULO(-1);
 
 
+
+/********************************/
+/********************************/
+/*  Definición de los métodos   */
+/********************************/
+/********************************/
 
 template <typename T>
     Abin<T>::Abin(size_t maxNodos, const T& e_nulo):
