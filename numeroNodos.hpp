@@ -2,9 +2,9 @@
 #define NUMERO_NODOS_H
 
 
-
+//Precondición: devuelve el n
 template <typename T>
-    int cuentaNodos(Abin<T>& arbol, typename Abin<T>::nodo n)
+    int cuentaNodos(Abin<T>& arbol)
     {
         if(n == Abin<T>::NODO_NULO)
         {

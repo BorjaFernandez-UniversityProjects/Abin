@@ -28,7 +28,7 @@ int main(int argc, char* args[])
     cout << "\n***\tMostrando arbol binario\t***\n";
     imprimirAbin(arbol);
 
-    cout << "\nEl arbol tiene " << cuentaNodos(arbol, arbol.raizB()) << " nodos.\n";
+    cout << "\nEl arbol tiene " << cuentaNodos(arbol) << " nodos.\n";
     
     return 0;
 }
