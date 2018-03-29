@@ -16,7 +16,7 @@ template <typename T> class Abin
     struct celda;       //declaración adelantada privada
 
     public:
-        typedef celda* nodo;        //La lista enlazada de nodos (celdas).
+        typedef celda* nodo;
         static const nodo NODO_NULO;
 
         Abin();                     //ctor.

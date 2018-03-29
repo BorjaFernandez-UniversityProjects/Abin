@@ -2,7 +2,7 @@
 #define NUMERO_NODOS_H
 
 
-//Precondición: devuelve el n
+//Postcondición: devuelve el número de nodos del árbol.
 template <typename T>
     int cuentaNodos(Abin<T>& arbol)
     {
