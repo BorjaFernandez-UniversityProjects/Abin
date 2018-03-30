@@ -12,7 +12,7 @@ template <typename T>
         }
         else
         {
-            return 1 + profundidadNodo(arbol, nodo->padre);
+            return 1 + profundidadNodo(arbol, arbol.padreB(nodo));
         }
     }
 
