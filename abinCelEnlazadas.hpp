@@ -226,7 +226,7 @@ template <typename T>
         if(this != &a)              //Evitamos la autoasignación.
         {
             this->~Abin();          //Destruimos el arbol existente (miembro izquierdo).
-            this->Abin(a);          //Llamamos al constructor de copia de nuestro árbol vacío.
+            r = copiar(a.r);
         }
         return *this;
     }
