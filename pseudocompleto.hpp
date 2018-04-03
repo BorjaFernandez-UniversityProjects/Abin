@@ -57,21 +57,36 @@ template <typename T>
 				
 				//Si el subárbol izquierdo tiene una diferencia de altura mayor que el derecho de
 				//más de uno, ignoramos el derecho, pues no tiene ningún nodo en el penúltimo nivel.
-				if(alturaHIzq > alturaHDer -1)
+				if(alturaHIzq > alturaHDer +1)
 				{
 					return pseudocompleto(arbol, arbol.hijoIzqdoB(nodo));
 				}
 
 				//Si, por el contrario, el subárbol derecho supera en altura por dos o más al
 				//subárbol izquierdo, ignoramos este por el mismo motivo.
-				if(alturaHDer > alturaHIzq -1)
+				if(alturaHDer > alturaHIzq +1)
 				{
 					return pseudocompleto(arbol, arbol.hijoDrchoB(nodo));
 				}
 
-				//Si ninguno de los subárboles supera en altura al otro por dos o más, devolvemos
-				//la unión de los resultados de ambos.
-				return pseudocompleto(arbol, arbol.hijoIzqdoB(nodo)) && pseudocompleto(arbol, arbol.hijoDrchoB(nodo));
+				//Si ninguno de los nodos hijo es nulo, devolvemos la unión del resultado de la función
+				//pseudocompleto en ambos nodos.
+				if(alturaHIzq != -1 && alturaHDer != -1)
+				{
+					return pseudocompleto(arbol, arbol.hijoIzqdoB(nodo)) && pseudocompleto(arbol, arbol.hijoDrchoB(nodo));
+				}
+				else
+				{
+					//Si el hijo izquierdo es no-nulo, devolvemos el resultado de aplicarle pseudocompleto()
+					if(alturaHIzq != -1)
+						return pseudocompleto(arbol, arbol.hijoIzqdoB(nodo));
+					//Si el hijo derecho es no-nulo, devolvemos el resultado de aplicarle pseudocompleto()
+					if(alturaHDer != -1)
+						return pseudocompleto(arbol, arbol.hijoDrchoB(nodo));
+				
+					//No se puede dar el caso de que un nodo no tenga hijos (ambos sean nulos) porque entonces habríamos
+					//"cortado" esa rama previamente por no tener nodos en el penúltimo nivel.
+				}
 			}
 		}
 	}
