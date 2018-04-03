@@ -1,0 +1,40 @@
+//Algoritmo que describe el comportamiento de la función 'pseudocompleto()'
+
+
+funcion booleano pseudocompleto(Arbol arbol, nodo n)
+
+    var
+        entero: alturaHIzq, alturaHDer
+    fin_var
+
+    inicio
+
+        si arbol.vacio() entonces
+            devolver verdadero
+        si_no
+            si penúltimoNivel() entonces
+                si noHijos() v dosHijos() entonces
+                    devolver verdadero
+                si_no
+                    devolver falso
+                fin_si
+
+            si_no
+                alturaHIzq <- alturaNodo(n.HijoIzq())
+                alturaHDer <- alturaNodo(n.HijoDer())
+
+                si alturaHIzq > alturaHder +1 entonces
+                    devolver pseudocompleto(arbol, n.hijoIzq())
+                fin_si
+
+                si alturaHDer > alturaHIzq +1 entonces
+                    devolver pseudocompleto(arbol, n.hijoDer())
+                fin_si
+    
+                devolver pseudocompleto(arbol, n.hijoIzq()) ^ pseudocompleto(arbol, n.hijoDer())
+                
+            fin_si
+        fin_si
+
+    fin_inicio
+fin_funcion
