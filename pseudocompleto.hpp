@@ -3,118 +3,65 @@
 
 #include "abinCelEnlazadas.hpp"
 #include "alturaArbolBin.hpp"
-#include "profundidadNodo.hpp"
 
 
-//Postcondición: llama a la función 'pseudocompleto()' con la altura y el nodo raíz (por defecto)
+//Postcondición: llama a la función 'pseudocompleto()' con el nodo raíz (por defecto)
 //				como parámetro.
 template <typename T>
-	bool pseudocompleto(Abin<T>& arbol)
+	bool pseudocompleto(Abin<T>& Arbol)
 	{
-		return pseudocompleto(arbol, arbol.raizB(), alturaArbolBin(arbol));
-	}
-
-//Postcondición: llama a la función 'pseudocompleto()' con la altura del árbol como parámetro,
-//				por si al usuario se le ha olvidado pasarlo.
-template <typename T>
-	bool pseudocompleto(Abin<T>& arbol, typename Abin<T>::nodo nodo)
-	{
-		return pseudocompleto(arbol, nodo, alturaArbolBin(arbol));
+		return pseudocompleto(Arbol.raizB(), Arbol);
 	}
 
 
 //Postcondición: devuelve verdadero si el árbol formado por 'nodo' como raíz cumple las condiciones
-//				de ser un árbol pseudocompleto. En caso contrario, devuelve falso.
+//			de ser un árbol pseudocompleto. En caso contrario, devuelve falso.
 template <typename T>
-	bool pseudocompleto(Abin<T>& arbol, typename Abin<T>::nodo nodo, int alturaArbol)
+	bool pseudocompleto(typename Abin<T>::nodo nodo, Abin<T>& Arbol)
 	{
-		//Comprobamos primero si el árbol está vacío, no sólo porque es una condición suficiente para que
-		//el árbol sea considerado como pseudocompleto, sino porque así prevenimos errores de acceso a
-		//posiciones inexistentes de memoria.
-		if(arbol.arbolVacioB())
+		bool esNulo, esHoja, esPadreCompleto;
+
+
+		if(alturaNodoArbolBin(nodo, Arbol) < 2)
 		{
-			return true;
-		}
-		else
-		{
-			//Si estamos en el penúltimo nivel.
-			if(profundidadNodo(arbol, nodo) >= alturaArbol -1)
+
+			esNulo = (nodo == Abin<T>::NODO_NULO);
+			esHoja = (Arbol.hijoIzqdoB(nodo) == Abin<T>::NODO_NULO) && (Arbol.hijoDrchoB(nodo) == Abin<T>::NODO_NULO);
+			esPadreCompleto = (Arbol.hijoIzqdoB(nodo) != Abin<T>::NODO_NULO) && (Arbol.hijoDrchoB(nodo) != Abin<T>::NODO_NULO);
+
+			if(esNulo || esHoja || esPadreCompleto)
 			{
-				//Si el nodo es pseudocompleto (es nodo hoja o tiene exactamente dos hijos).
-				if(esNodoPseudocompleto(arbol, nodo))
-				{
-					return true;
-				}
-				else
-				{
-					return false;
-				}
+				return true;
 			}
 			else
 			{
-				int alturaHIzq = alturaNodoArbolBin(arbol, arbol.hijoIzqdoB(nodo));
-				int alturaHDer = alturaNodoArbolBin(arbol, arbol.hijoDrchoB(nodo));
+				return false;
+			}
+		}
+		else
+		{
+			int alturaHIzq = alturaNodoArbolBin(Arbol.hijoIzqdoB(nodo), Arbol);
+			int alturaHDer = alturaNodoArbolBin(Arbol.hijoDrchoB(nodo), Arbol);
 				
-				//Si el subárbol izquierdo tiene una diferencia de altura mayor que el derecho de
-				//más de uno, ignoramos el derecho, pues no tiene ningún nodo en el penúltimo nivel.
-				if(alturaHIzq > alturaHDer +1)
+			//Si el subárbol izquierdo es más alto que el derecho, éste siempre devolverá true, porque
+			//o bien no tiene nodos en el penúltimo nivel, o los que tiene son todos hoja,
+			if(alturaHIzq > alturaHDer)
+			{
+				return pseudocompleto(Arbol.hijoIzqdoB(nodo), Arbol);
+			}
+			else
+			{
+				if(alturaHIzq < alturaHDer)
 				{
-					return pseudocompleto(arbol, arbol.hijoIzqdoB(nodo));
-				}
-
-				//Si, por el contrario, el subárbol derecho supera en altura por dos o más al
-				//subárbol izquierdo, ignoramos este por el mismo motivo.
-				if(alturaHDer > alturaHIzq +1)
-				{
-					return pseudocompleto(arbol, arbol.hijoDrchoB(nodo));
-				}
-
-				//Si ninguno de los nodos hijo es nulo, devolvemos la unión del resultado de la función
-				//pseudocompleto en ambos nodos.
-				if(alturaHIzq != -1 && alturaHDer != -1)
-				{
-					return pseudocompleto(arbol, arbol.hijoIzqdoB(nodo)) && pseudocompleto(arbol, arbol.hijoDrchoB(nodo));
+					return pseudocompleto(Arbol.hijoDrchoB(nodo), Arbol);
 				}
 				else
 				{
-					//Si el hijo izquierdo es no-nulo, devolvemos el resultado de aplicarle pseudocompleto()
-					if(alturaHIzq != -1)
-						return pseudocompleto(arbol, arbol.hijoIzqdoB(nodo));
-					//Si el hijo derecho es no-nulo, devolvemos el resultado de aplicarle pseudocompleto()
-					if(alturaHDer != -1)
-						return pseudocompleto(arbol, arbol.hijoDrchoB(nodo));
-				
-					//No se puede dar el caso de que un nodo no tenga hijos (ambos sean nulos) porque entonces habríamos
-					//"cortado" esa rama previamente por no tener nodos en el penúltimo nivel.
+					//Devolvemos la unión del resultado de la función pseudocompleto en ambos nodos.
+					return pseudocompleto(Arbol.hijoIzqdoB(nodo), Arbol) && pseudocompleto(Arbol.hijoDrchoB(nodo), Arbol);
 				}
 			}
 		}
-	}
-
-//Postcondición: si 'nodo' es un nodo hoja (no tiene hijos) o, por el contrario, tiene exactamente
-//				dos hijos, devuelve verdadero. En caso de ser un nodo nulo o de tener solo un hijo
-//				(los otros dos posibles casos) devuelve falso.
-template <typename T>
-	bool esNodoPseudocompleto(Abin<T>& arbol, typename Abin<T>::nodo nodo)
-	{
-		bool resultado;
-
-		resultado = false;
-
-		if(nodo != Abin<T>::NODO_NULO)
-		{
-			if(arbol.hijoIzqdoB(nodo) == Abin<T>::NODO_NULO)
-			{
-				if(arbol.hijoDrchoB(nodo) == Abin<T>::NODO_NULO)
-					resultado = true;
-			}
-			else if(arbol.hijoDrchoB(nodo) != Abin<T>::NODO_NULO)
-			{
-					resultado = true;
-			}
-		}
-
-		return resultado;	
 	}
 
 
