@@ -17,18 +17,18 @@ using namespace std;
 int main(int argc, char* args[])
 {
 
-        Abin<char> arbol{};
+        Abin<char> Arbol{};
 
         ifstream inputStream("arbol.dat");
 
         cout << "\n***\tLeyendo árbol binario de fichero\t***\n";
-        rellenarAbin(inputStream, arbol);
+        rellenarAbin(inputStream, Arbol);
         inputStream.close();
 
         cout << "\n***\tMostrando árbol binario\t***\n";
-        imprimirAbin(arbol);
+        imprimirAbin(Arbol);
 
-        cout << "\nEl árbol binario es de altura " << alturaArbolBin(arbol) << ".\n";
+        cout << "\nEl árbol binario es de altura " << alturaArbolBin(Arbol) << ".\n";
 
         return 0;
 }

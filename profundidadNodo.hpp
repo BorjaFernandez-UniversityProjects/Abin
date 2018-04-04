@@ -3,7 +3,7 @@
 
 
 template <typename T>
-    int profundidadNodo(Abin<T>& arbol, typename Abin<T>::nodo nodo)
+    int profundidadNodo(typename Abin<T>::nodo nodo, Abin<T>& Arbol)
     {
 
         if(nodo == arbol.raizB())
@@ -12,7 +12,7 @@ template <typename T>
         }
         else
         {
-            return 1 + profundidadNodo(arbol, arbol.padreB(nodo));
+            return 1 + profundidadNodo(Arbol.padreB(nodo), Arbol);
         }
     }
 

@@ -3,19 +3,19 @@
 
 
 template <typename T>
-    int desequilibrioArbolBin(Abin<T>& arbol)
+    int desequilibrioArbolBin(Abin<T>& Arbol)
     {
-        return desequilibrioNodoBin(arbol, arbol.raizB());
+        return desequilibrioNodoBin(Arbol.raizB(), Arbol);
     }
 
 
 template <typename T>
-    int desequilibrioNodoBin(Abin<T>& arbol, Abin<T>::nodo nodo)
+    int desequilibrioNodoBin(typename Abin<T>::nodo nodo, Abin<T>& Arbol)
     {
         int diferenciaAltura, alturaHIzq, alturaHDer;
 
-        alturaHIzq = alturaNodoArbolBin(arbol, arbol.hijoIzqdoB(nodo));
-        alturaHDer = alturaNodoArbolBin(arbol, arbol.hijoDrchoB(nodo));
+        alturaHIzq = alturaNodoArbolBin(Arbol.hijoIzqdoB(nodo), Arbol);
+        alturaHDer = alturaNodoArbolBin(Arbol.hijoDrchoB(nodo), Arbol);
 
         if(alturaHIzq >= alturaHder)
         {
