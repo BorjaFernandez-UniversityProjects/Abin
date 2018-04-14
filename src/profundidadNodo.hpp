@@ -5,14 +5,20 @@
 template <typename T>
     int profundidadNodo(typename Abin<T>::nodo nodo, Abin<T>& Arbol)
     {
-
-        if(nodo == arbol.raizB())
+        if(nodo == Abin<T>::NODO_NULO)
         {
-            return 0;
+            return -1;
         }
         else
         {
-            return 1 + profundidadNodo(Arbol.padreB(nodo), Arbol);
+            if(nodo == arbol.raizB())
+            {
+                return 0;
+            }
+            else
+            {
+                return 1 + profundidadNodo(Arbol.padreB(nodo), Arbol);
+            }
         }
     }
 
