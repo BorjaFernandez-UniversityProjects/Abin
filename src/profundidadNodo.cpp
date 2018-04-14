@@ -17,31 +17,20 @@ using namespace std;
 
 int main(int argc, char* args[])
 {
-    Abin<char> arbol{};
+    Abin<char> Arbol{};
 
     ifstream inputStream("arbol.dat");
 
     cout << "\n***\tLeyendo arbol binario de fichero\t***\n";
-    rellenarAbin(inputStream, arbol);
+    rellenarAbin(inputStream, Arbol);
     inputStream.close();
 
     cout << "\n***\tMostrando arbol binario\t***\n";
-    imprimirAbin(arbol);
+    imprimirAbin(Arbol);
 
-    //Escogemos para la prueba dos nodos concretos totalmente dependientes de la forma que le hemos
-    //dado al árbol en el fichero "arbol.dat".
-    
-    /*
-     * Abin<char>::nodo nodoF, nodoL;
-     * nodoF = arbol.hijoDrchoB(arbol.hijoDrchoB(arbol.hijoIzqdoB(arbol.raizB())));
-     * nodoL = arbol.hijoIzqdoB(arbol.hijoDrchoB(arbol.hijoDrchoB(arbol.hijoDrchoB(arbol.raizB()))));
-     *  
-     * cout << "\nEl nodo F tiene profundidad " << profundidadNodo(arbol, profundidadNodo(nodoF)) << " .\n";
-     * cout << "\nEl nodo L tiene profundidad " << profundidadNodo(arbol, profundidadNodo(nodoL)) << " .\n";
-     */
 
-    cout << "\nEl nodo F tiene profundidad " << profundidadNodo(arbol, arbol.hijoDrchoB(arbol.hijoDrchoB(arbol.hijoIzqdoB(arbol.raizB())))) << " .\n";
-    cout << "\nEl nodo L tiene profundidad " << profundidadNodo(arbol, arbol.hijoIzqdoB(arbol.hijoDrchoB(arbol.hijoDrchoB(arbol.hijoDrchoB(arbol.raizB()))))) << " .\n";
+    cout << "\nEl nodo F tiene profundidad " << profundidadNodo(Arbol.hijoDrchoB(Arbol.hijoDrchoB(Arbol.hijoIzqdoB(Arbol.raizB()))), Arbol) << " .\n";
+    cout << "\nEl nodo L tiene profundidad " << profundidadNodo(Arbol.hijoIzqdoB(Arbol.hijoDrchoB(Arbol.hijoDrchoB(Arbol.hijoDrchoB(Arbol.raizB())))), Arbol) << " .\n";
 
 
 

@@ -28,7 +28,7 @@ template <typename T> class Abin
         void insertarHijoIzqdoB(nodo n, const T& e);
         void insertarHijoDrchoB(nodo n, const T& e);
         void eliminarHijoIzqdoB(nodo n);
-        void eliminarHijoDrchoB(nodo);
+        void eliminarHijoDrchoB(nodo n);
         void eliminarRaizB();
         bool arbolVacioB() const;
         const T& elemento(nodo n) const;        //acceso a elto, lectura
