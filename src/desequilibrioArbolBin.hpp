@@ -1,7 +1,7 @@
 #ifndef DESEQUILIBRIO_ARBOL_BIN_H
 #define DESEQUILIBRIO_ARBOL_BIN_H
 
-
+//Función llamadora de 'desequilibrioNodoBin'
 template <typename T>
     int desequilibrioArbolBin(Abin<T>& Arbol)
     {
@@ -9,6 +9,8 @@ template <typename T>
     }
 
 
+//Precondición: ninguna.
+//Postcondición: devuelve el desequilibrio del nodo 'n' en el árbol 'Arbol'.
 template <typename T>
     int desequilibrioNodoBin(typename Abin<T>::nodo nodo, Abin<T>& Arbol)
     {
@@ -28,3 +30,5 @@ template <typename T>
 
         return diferenciaAltura;
     }
+
+#endif  //DESEQUILIBRIO_ARBOL_BIN_H
