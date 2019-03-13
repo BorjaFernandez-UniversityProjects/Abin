@@ -30,5 +30,7 @@ int main(int argc, char* args[])
 
         cout << "\nEl árbol binario es de altura " << alturaArbolBin(Arbol) << ".\n";
 
+        getchar();
+
         return 0;
 }
