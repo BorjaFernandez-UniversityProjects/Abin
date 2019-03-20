@@ -11,7 +11,7 @@ template <typename T>
         }
         else
         {
-            if(nodo == arbol.raizB())
+            if(nodo == Arbol.raizB())
             {
                 return 0;
             }
