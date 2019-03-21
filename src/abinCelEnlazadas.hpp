@@ -27,12 +27,15 @@ template <typename T> class Abin
         void insertarRaizB(const T& e);
         void insertarHijoIzqdoB(nodo n, const T& e);
         void insertarHijoDrchoB(nodo n, const T& e);
+
         void eliminarHijoIzqdoB(nodo n);
         void eliminarHijoDrchoB(nodo n);
         void eliminarRaizB();
         bool arbolVacioB() const;
+
         const T& elemento(nodo n) const;        //acceso a elto, lectura
         T& elemento(nodo n);                    //acceso a elto, lectura/escritura
+        
         nodo raizB() const;                     //Devuelve el nodo correspondiente a la raíz.
         nodo padreB(nodo n) const;              //Devuelve el nodo padre del nodo pasado como parámetro.
         nodo hijoIzqdoB(nodo n) const;          //Devuelve el nodo hijo izquierdo del nodo pasado por parámetro.
