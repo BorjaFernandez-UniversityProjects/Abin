@@ -2,7 +2,7 @@
 #define NODOS_NOSTALGICOS_H
 
 #include "abinCelEnlazadas.hpp"
-#include "profundidad.hpp"
+#include "profundidadNodo.hpp"
 #include "numeroNodos.hpp"
 
 
