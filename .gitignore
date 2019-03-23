@@ -1,1 +1,14 @@
+#Binarios de Windows
 *.exe
+
+#Archivos de VSCode
+*.json
+.vs/*
+.vscode*
+P1.code-workspace
+
+#Archivos objeto
+obj/*
+
+#Archivos que contienen la estructura de un árbol para pruebas.
+*.dat
