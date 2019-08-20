@@ -10,7 +10,7 @@ template <typename T>
 
 
 template <typename T>
-    int alturaNodoArbolBin(typename Abin<T>::nodo nodo, Abin<T>& Arbol)
+    int alturaArbolBin(typename Abin<T>::nodo nodo, Abin<T>& Arbol)
     {
 
         int alturaHijoIzq, alturaHijoDrc;
@@ -21,8 +21,8 @@ template <typename T>
         }
         else
         {
-            alturaHijoIzq = alturaNodoArbolBin(Arbol.hijoIzqdoB(nodo), Arbol);
-            alturaHijoDrc = alturaNodoArbolBin(Arbol.hijoDrchoB(nodo), Arbol);
+            alturaHijoIzq = alturaArbolBin(Arbol.hijoIzqdoB(nodo), Arbol);
+            alturaHijoDrc = alturaArbolBin(Arbol.hijoDrchoB(nodo), Arbol);
 
             if(alturaHijoIzq >= alturaHijoDrc)
             {
